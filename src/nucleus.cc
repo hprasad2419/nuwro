@@ -48,27 +48,37 @@ nucleus::nucleus(params &par):
 	Lambda_Eb = par.hyp_Lambda_Eb;
 	Sigma_Eb = par.hyp_Sigma_Eb;
 
-
-  //Attaching appropriate hadronic grids according to the nucleus configuration 
-  if (p > 12) {  // Calcium grid 
-    W00.Attach_ptr(Ca40_W00pp, Ca40_W00np, Ca40_W00pn, Ca40_W00_3p3h);
-    W03.Attach_ptr(Ca40_W03pp, Ca40_W03np, Ca40_W03pn, Ca40_W03_3p3h);
-    W11.Attach_ptr(Ca40_W11pp, Ca40_W11np, Ca40_W11pn, Ca40_W11_3p3h);
-    W12.Attach_ptr(Ca40_W12pp, Ca40_W12np, Ca40_W12pn, Ca40_W12_3p3h);
-    W33.Attach_ptr(Ca40_W33pp, Ca40_W33np, Ca40_W33pn, Ca40_W33_3p3h);
-  } else if ((p > 6) and (p<=12)) { // Oxygen grid
-      W00.Attach_ptr(O16_W00pp, O16_W00np, O16_W00pn, O16_W00_3p3h);
-      W03.Attach_ptr(O16_W03pp, O16_W03np, O16_W03pn, O16_W03_3p3h);
-      W11.Attach_ptr(O16_W11pp, O16_W11np, O16_W11pn, O16_W11_3p3h);
-      W12.Attach_ptr(O16_W12pp, O16_W12np, O16_W12pn, O16_W12_3p3h);
-      W33.Attach_ptr(O16_W33pp, O16_W33np, O16_W33pn, O16_W33_3p3h);
-    } else {    // Carbon Grid
-      W00.Attach_ptr(C12_W00pp, C12_W00np, C12_W00pn, C12_W00_3p3h);
-      W03.Attach_ptr(C12_W03pp, C12_W03np, C12_W03pn, C12_W03_3p3h);
-      W11.Attach_ptr(C12_W11pp, C12_W11np, C12_W11pn, C12_W11_3p3h);
-      W12.Attach_ptr(C12_W12pp, C12_W12np, C12_W12pn, C12_W12_3p3h);
-      W33.Attach_ptr(C12_W33pp, C12_W33np, C12_W33pn, C12_W33_3p3h);
+  if(par.mec_kind == 6) {
+    //Attaching appropriate hadronic grids according to the nucleus configuration 
+    if (p > 12) {  // Calcium grid 
+      W00.Attach_ptr(Ca40_W00pp, Ca40_W00np, Ca40_W00pn, Ca40_W00_3p3h);
+      W03.Attach_ptr(Ca40_W03pp, Ca40_W03np, Ca40_W03pn, Ca40_W03_3p3h);
+      W11.Attach_ptr(Ca40_W11pp, Ca40_W11np, Ca40_W11pn, Ca40_W11_3p3h);
+      W12.Attach_ptr(Ca40_W12pp, Ca40_W12np, Ca40_W12pn, Ca40_W12_3p3h);
+      W33.Attach_ptr(Ca40_W33pp, Ca40_W33np, Ca40_W33pn, Ca40_W33_3p3h);
+    } else if ((p > 6) and (p<=12)) { // Oxygen grid
+        W00.Attach_ptr(O16_W00pp, O16_W00np, O16_W00pn, O16_W00_3p3h);
+        W03.Attach_ptr(O16_W03pp, O16_W03np, O16_W03pn, O16_W03_3p3h);
+        W11.Attach_ptr(O16_W11pp, O16_W11np, O16_W11pn, O16_W11_3p3h);
+        W12.Attach_ptr(O16_W12pp, O16_W12np, O16_W12pn, O16_W12_3p3h);
+        W33.Attach_ptr(O16_W33pp, O16_W33np, O16_W33pn, O16_W33_3p3h);
+      } else {    // Carbon Grid
+        W00.Attach_ptr(C12_W00pp, C12_W00np, C12_W00pn, C12_W00_3p3h);
+        W03.Attach_ptr(C12_W03pp, C12_W03np, C12_W03pn, C12_W03_3p3h);
+        W11.Attach_ptr(C12_W11pp, C12_W11np, C12_W11pn, C12_W11_3p3h);
+        W12.Attach_ptr(C12_W12pp, C12_W12np, C12_W12pn, C12_W12_3p3h);
+        W33.Attach_ptr(C12_W33pp, C12_W33np, C12_W33pn, C12_W33_3p3h);
+      }
+  }
+  else if (par.mec_kind == 7) {
+    if (p <= 6) {
+      W00.Attach_ptr(C12_W00pp_v2024, C12_W00np_v2024, C12_W00pn_v2024, C12_W00_3p3h_v2024);
+      W03.Attach_ptr(C12_W03pp_v2024, C12_W03np_v2024, C12_W03pn_v2024, C12_W03_3p3h_v2024);
+      W11.Attach_ptr(C12_W11pp_v2024, C12_W11np_v2024, C12_W11pn_v2024, C12_W11_3p3h_v2024);
+      W12.Attach_ptr(C12_W12pp_v2024, C12_W12np_v2024, C12_W12pn_v2024, C12_W12_3p3h_v2024);
+      W33.Attach_ptr(C12_W33pp_v2024, C12_W33np_v2024, C12_W33pn_v2024, C12_W33_3p3h_v2024);
     }
+  }
 }
 
 double nucleus::density (double r)

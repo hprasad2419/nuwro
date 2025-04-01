@@ -9,19 +9,7 @@
 #include "isotopes.h"
 #include <stack>
 
-
-#include "MEC_data/C12/C12_pp.h"
-#include "MEC_data/C12/C12_np.h"
-#include "MEC_data/C12/C12_pn.h"
-#include "MEC_data/C12/C12_3p3h.h"
-#include "MEC_data/O16/O16_pp.h"
-#include "MEC_data/O16/O16_np.h"
-#include "MEC_data/O16/O16_pn.h"
-#include "MEC_data/O16/O16_3p3h.h"
-#include "MEC_data/Ca40/Ca40_pp.h"
-#include "MEC_data/Ca40/Ca40_np.h"
-#include "MEC_data/Ca40/Ca40_pn.h"
-#include "MEC_data/Ca40/Ca40_3p3h.h"
+#include "MEC_Header_Files.h"
 
 using namespace std;
 
