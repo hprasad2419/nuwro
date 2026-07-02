@@ -11,6 +11,7 @@
 #include "params.h"
 #include "particle.h"
 #include "pdg.h"
+#include <TMath.h>
 
 // Global variables and common functions in Jakub's implementation
 #include "mecevent_common.h"
